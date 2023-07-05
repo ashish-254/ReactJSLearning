@@ -8,7 +8,7 @@ export default function TextForm() {
     const [bStyle, changeBStyle] = useState({
         background: 'white',
         color: 'black',
-        border: '5px solid red'
+        border: '5px solid red',
     })
 
 
@@ -26,7 +26,7 @@ export default function TextForm() {
             changeBStyle({
                 background:'white',
                 color:'black',
-                border: '5px solid red'
+                border: '5px solid red',
             })
         }
         

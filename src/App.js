@@ -1,32 +1,46 @@
 //import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
-import TextForm from './Components/TextForm';
+//import TextForm from './Components/TextForm';
 import TextForm2 from './Components/TextForm2';
-import React,{useState} from 'react';
+import About from './Components/About';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
+
+
 
 
 function App() {
-  const [mode,changeMode] = useState('light')
+  const [mode, changeMode] = useState('light')
 
-  const toggleMode =()=>{
-    if(mode==='light'){
+  const toggleMode = () => {
+    if (mode === 'light') {
       changeMode('dark')
       document.body.style.background = '#52585e'
     }
-    else{
+    else {
       changeMode('light')
       document.body.style.background = 'white'
     }
   }
-  
+
   return (
     <>
-      <Navbar title="Ashish" about="about_section" mode={mode} toggleMode={toggleMode}/>
-      {/* <TextForm mode={mode}/> */}
-      <TextForm2 mode={mode}/>
-    </>
+      <Router>
+        <Navbar title="Ashish" about="about_section" mode={mode} toggleMode={toggleMode} />
+        {/* <TextForm mode={mode}/> */}
 
+        <Routes>
+          <Route exact path="/" element={<TextForm2 mode={mode}/>} />
+          <Route exact path="/about" element={<About />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
